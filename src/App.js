@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 class App extends Component {
  
   render() {
-     const {dog, onFetchUser, fetching, error} = this.props;
+     const {dog, fetching, error, onFetchUser} = this.props;
     return (
       <div className="App">
         <header className="App-header">
@@ -22,7 +22,7 @@ class App extends Component {
         {
           fetching ? 
           (<button disabled>Fetching...</button>) :
-          (<button onClick={onFetchUser}>click button to get a Dog</button>)
+          (<button onClick={onFetchUser}>click button to Toogle a Dog</button>)
         }
 
         {error && <p style={{ color: 'red' }}>Oh, Something looks wrong!</p>}
@@ -33,7 +33,9 @@ class App extends Component {
 }
 
 const mapStateToProps = state => ({
-  dog: state.dog
+  dog: state.dog,
+  fetching: state.fetching,
+  error: state.error
 });
 
 const mapDispatchToProps = dispatch => ({
